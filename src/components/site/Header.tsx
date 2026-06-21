@@ -26,8 +26,8 @@ export function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-colors duration-300 ${
-        scrolled ? "bg-background/85 backdrop-blur border-b border-border" : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled ? "bg-background/95 backdrop-blur-md border-b border-border py-0" : "bg-transparent py-2"
       }`}
     >
       <div className="container-edge flex h-16 items-center justify-between md:h-20">
