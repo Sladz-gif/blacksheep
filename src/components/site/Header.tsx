@@ -27,7 +27,7 @@ export function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? "bg-background/95 backdrop-blur-md border-b border-border py-0" : "bg-transparent py-2"
+        open ? "bg-black" : (scrolled ? "bg-background/95 backdrop-blur-md border-b border-border py-0" : "bg-transparent py-2")
       }`}
     >
       <div className="container-edge flex h-16 items-center justify-between md:h-20">
@@ -40,10 +40,10 @@ export function Header() {
             BS
           </span>
           <span className="flex flex-col leading-none">
-            <span className={`font-display text-[13px] font-bold tracking-tight ${scrolled ? "text-foreground" : "text-primary-foreground"}`}>
+            <span className={`font-display text-[13px] font-bold tracking-tight ${open ? "text-white" : (scrolled ? "text-foreground" : "text-primary-foreground")}`}>
               Black Sheep Foundation
             </span>
-            <span className={`text-[10px] uppercase tracking-[0.2em] ${scrolled ? "text-muted-foreground" : "text-primary-foreground/70"}`}>
+            <span className={`text-[10px] uppercase tracking-[0.2em] ${open ? "text-white/70" : (scrolled ? "text-muted-foreground" : "text-primary-foreground/70")}`}>
               Ghana · est. 2016
             </span>
           </span>
@@ -76,7 +76,9 @@ export function Header() {
 
         <button
           onClick={() => setOpen((v) => !v)}
-          className="md:hidden grid h-10 w-10 place-items-center rounded-full border-2 border-white bg-black text-white"
+          className={`md:hidden grid h-10 w-10 place-items-center rounded-full transition-colors duration-300 ${
+            open ? "border-2 border-white bg-black text-white" : (scrolled ? "border-2 border-primary bg-background text-primary" : "border-2 border-white bg-black text-white")
+          }`}
           aria-label="Toggle menu"
         >
           {open ? <X size={18} /> : <Menu size={18} />}
@@ -84,7 +86,7 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="md:hidden fixed inset-0 top-16 z-40 bg-black fade-up">
+        <div className="md:hidden fixed inset-0 top-16 z-[60] bg-black fade-up">
           <div className="container-edge flex flex-col gap-1 pt-8">
             {links.map((l, i) => (
               <Link
