@@ -1,0 +1,6 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": ".tanstack/output/server",
+  "installCommand": "npm install",
+  "framework": null
+}
